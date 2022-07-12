@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="component_with_custom_properties.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .high-contrast {
+            --container-color: black;
+            --font-color: white;
+            --h1-color: pink;
+        }
+
+        my-component-using-template {
+            --h1-color: white;
+        }
+    </style>
+    <my-component-using-template
+        class="high-contrast"
+        title="this is the title"
+        paragraph="this is the paragraph"
+        img="https://media.istockphoto.com/photos/picking-grapes-picture-id1342262055?s=612x612"
+    >
+    </my-component-using-template>
+
+    <my-component-using-template
+        class="yellow"
+        title="this is the title"
+        paragraph="this is the paragraph"
+        img="https://media.istockphoto.com/photos/picking-grapes-picture-id1342262055?s=612x612"
+    >
+    </my-component-using-template>
+
+    <my-component-using-template
+        blue
+        title="this is the title"
+        paragraph="this is the paragraph"
+        img="https://media.istockphoto.com/photos/picking-grapes-picture-id1342262055?s=612x612"
+    >
+    </my-component-using-template>
+
+    
+</body>
+</html>

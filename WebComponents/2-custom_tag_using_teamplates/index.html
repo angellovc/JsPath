@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="component_using_templates.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <my-component-using-template></my-component-using-template>
+    <div>
+        <p>In this case the styles of the entire project are overriden by the introduction of the new component_using_templates
+            that's why it's necessary to use shadow dom to encapsulates all, the logic and the styles, inside the custom component
+            so that they don't affect anything else in the project
+        </p>
+    </div>
+</body>
+</html>

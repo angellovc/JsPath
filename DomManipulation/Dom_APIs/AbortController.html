@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Abort Fetch</title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <img id="huge-image" height="400"/>
+
+    <button id="load">Load HUGE Image</button>
+    <button id="stop" disabled>Stop Fetching</button>
+
+    <script>
+      const url = 'https://images.pexels.com/photos/974470/nature-stars-milky-way-galaxy-974470.jpeg?q=100';
+      const imgContainer = document.getElementById('huge-image');
+      const loadButton = document.getElementById('load');
+      const stopButton = document.getElementById('stop');
+      let controller;
+
+      function startLoading() {
+        loadButton.disabled = true;
+        loadButton.innerText = 'Loading...';
+        stopButton.disabled = false;
+      }
+
+      function stopLoading() {
+        loadButton.disabled = false;
+        loadButton.innerText = 'Load HUGE Image';
+        stopButton.disabled = true;
+      }
+
+      loadButton.onclick = async function() {
+        startLoading();
+
+        // Controles emits a signal, you can passs that signal to a fetch
+        // and by using that signal you can control the execution of the fetch
+        // this way you can cancel the fetch
+        controller = new AbortController();
+
+        // the error in console is due to we are cancelling the signal, so we can use a try catch to get the error
+        try {
+
+            const response = await fetch(url, { signal: controller.signal });
+            const blob = await response.blob();
+            const imgUrl = URL.createObjectURL(blob);
+            imgContainer.src = imgUrl;
+        } catch (error){
+            console.log(error);
+        }
+
+        stopLoading();
+      };
+      // when i press the stop button, the function
+      // controller abort will be executed passing the
+      // signal to the fetch and aborting the execution
+      stopButton.onclick = function() {
+        controller.abort();
+        stopLoading();
+      };
+    </script>
+  </body>
+</html>

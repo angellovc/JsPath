@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Service workers is a functionality used to preserve some functionalities
+    When the application is offline. It is achieved by using the cache memory -->
+    <img id="image" height="400"/>
+    <img id="image" height="400" src="index.jpeg"/>
+    <script>
+        // Since it is a new feature not all the browsers are compatible with it
+        // it is necesary to ask
+        if ('serviceWorker' in navigator) {
+            // if the browser in compatible we can register a service
+            navigator.serviceWorker.register('./service_worker.js');  
+        }
+        async function fetchImage() {
+            const url = "https://images.pexels.com/photos/974470/nature-stars-milky-way-galaxy-974470.jpeg?q=100";
+            const response = await fetch(url);
+            const blob = await response.blob();
+            const imgUrl = URL.createObjectURL(blob);
+            document.getElementById("image").src = imgUrl;
+        }
+        fetchImage();
+    </script>
+</body>
+</html>

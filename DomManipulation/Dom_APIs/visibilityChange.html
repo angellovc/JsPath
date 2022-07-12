@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Change the Tab and look at the console</h1>
+    <script>
+        // We can add listeners to any element in the dom and also to the dom itself
+        // those listeners will be listening ultin something take place and once that
+        // happen, a functio will be executed
+        /* First argument is the kind of event we want JS to listen */
+        /* Second argument is the function */
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+                console.log("You are on the page");
+            } else {
+                console.log("You jumped into another tab");
+            }
+        });
+
+    </script>
+</body>
+</html>
