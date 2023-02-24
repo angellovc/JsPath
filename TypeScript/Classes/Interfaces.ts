@@ -17,7 +17,7 @@ interface Person {
     name: string,
     role: Roles,
     // By adding an interrogant at the end
-    // the property will be treated as opcional
+    // the property will be treated as optional
     sayHello?(): void
 }
 
@@ -29,7 +29,7 @@ const studentObject: Person = {
     role: Roles.admin,
 }
 
-// We we want to use an interface to constrain a clase
+// We we want to use an interface to constrain a class
 // we use implements 
 class Student implements Person {
     private _id: number;
